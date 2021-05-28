@@ -1,10 +1,10 @@
-#movie API 
+# movie API 
 
-##Project Goals
+## Project Goals
 To build the server-side component of a “movies” web application. The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their
 personal information, and create a list of their favorite movies.
 
-##Key Features
+## Key Features
 - Return a list of ALL movies to the user
 - Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user
 - Return data about a genre (description) by name/title (e.g., “Thriller”)
@@ -15,16 +15,16 @@ personal information, and create a list of their favorite movies.
 - Allow users to remove a movie from their list of favorites
 - Allow existing users to deregister
 
-##Tech stack:
-###MERN Stack: 
+## Tech stack:
+### MERN Stack: 
 - Node.js
 - Express
 - React
 - MongoDB
 
-##Setup guide:
+## Setup guide:
 clone the repository: git clone xxxx
 Change directory: cd xxx
-##Deployment
-###Deployment to Heroku
+## Deployment
+### Deployment to Heroku
 Not ready yet
