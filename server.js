@@ -30,7 +30,7 @@ http
     } else {
       filePath = "index.html"; // otherwise, the user will be redirected to the homepage
     }
-
+    // with the use of the File System, this will read the file (whatever is contained in the variable 'filePath') aiming to respond it to users.
     fs.readFile(filePath, (err, data) => {
       if (err) {
         throw err;
