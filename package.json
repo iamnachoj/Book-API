@@ -1,0 +1,27 @@
+{
+  "name": "movie-api",
+  "version": "1.0.0",
+  "description": "server-side component for a \"movies\" web app.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamnachoj/Movie-API.git"
+  },
+  "keywords": [
+    "movies-web-app",
+    "JS",
+    "Node",
+    "server",
+    "API"
+  ],
+  "author": "Ignacio Jimenez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamnachoj/Movie-API/issues"
+  },
+  "homepage": "https://github.com/iamnachoj/Movie-API#readme"
+}
