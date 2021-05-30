@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/iamnachoj/Movie-API/issues"
   },
-  "homepage": "https://github.com/iamnachoj/Movie-API#readme"
+  "homepage": "https://github.com/iamnachoj/Movie-API#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
