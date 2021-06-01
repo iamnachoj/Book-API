@@ -16,6 +16,7 @@ let topBooks = [
     author: "Stephanie Meyer",
   },
 ];
+
 // middleware
 app.use(morgan("common"));
 app.use(express.static("public")); // this allows files to fetch statically, within the public folder
