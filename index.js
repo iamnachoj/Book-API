@@ -18,14 +18,15 @@ let topBooks = [
 ];
 // middleware
 app.use(morgan("common"));
+app.use(express.static("public"));
 
 // GET requests
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/public/index.html");
 });
 
 app.get("/documentation", (req, res) => {
-  res.sendFile(__dirname + "/documentation.html");
+  res.sendFile(__dirname + "/public/documentation.html");
 });
 
 app.get("/books", (req, res) => {
