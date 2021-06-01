@@ -19,7 +19,11 @@ let topBooks = [
 // middleware
 app.use(morgan("common"));
 app.use(express.static("public")); // this allows files to fetch statically, within the public folder
-
+// deal with error:
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
 // GET requests
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html"); // dirname allows node to start by the current directory
