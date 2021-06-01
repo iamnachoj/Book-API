@@ -18,11 +18,11 @@ let topBooks = [
 ];
 // middleware
 app.use(morgan("common"));
-app.use(express.static("public"));
+app.use(express.static("public")); // this allows files to fetch statically, within the public folder
 
 // GET requests
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
+  res.sendFile(__dirname + "/public/index.html"); // dirname allows node to start by the current directory
 });
 
 app.get("/documentation", (req, res) => {
