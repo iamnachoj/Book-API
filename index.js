@@ -1,4 +1,5 @@
-const morgan = require("morgan");
+const morgan = require("morgan"); // Require Morgan
+const bodyParser = require("body-parser"); // require body-parser
 const express = require("express"); // Require Express
 const app = express();
 
