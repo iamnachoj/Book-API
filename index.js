@@ -1,3 +1,4 @@
+const morgan = require("morgan");
 const express = require("express"); // Require Express
 const app = express();
 
@@ -15,6 +16,8 @@ let topBooks = [
     author: "Stephanie Meyer",
   },
 ];
+// middleware
+app.use(morgan("common"));
 
 // GET requests
 app.get("/", (req, res) => {
