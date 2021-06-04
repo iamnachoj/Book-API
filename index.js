@@ -48,7 +48,12 @@ let movies = [
       "Luke Skywalker attempts to bring his father back to the light side of the Force. At the same time, the rebels hatch a plan to destroy the second Death Star.",
   },
 ];
-
+let users = [
+  {
+    name: "Ignacio Jimenez",
+    password: "lol1234",
+  },
+];
 // middleware
 app.use(morgan("common"));
 app.use(express.static("public")); // this allows files to fetch statically, within the public folder
@@ -79,6 +84,19 @@ app.get("/API/movies/:title", (req, res) => {
       return movie.title === req.params.title;
     })
   );
+});
+
+//POST requests
+app.post("/sign-up", (req, res) => {
+  let user = req.body;
+
+  if (!user.name) {
+    res.status(400).send("Missing name!");
+  } else {
+    user.id = uuid.v4();
+    users.push(user);
+    res.json(user);
+  }
 });
 
 // listen for requests
