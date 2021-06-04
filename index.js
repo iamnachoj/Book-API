@@ -44,6 +44,7 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
 });
+
 // GET requests
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html"); // dirname allows node to start by the current directory
@@ -55,6 +56,14 @@ app.get("/documentation", (req, res) => {
 
 app.get("/movies", (req, res) => {
   res.json(movies);
+});
+
+app.get("/movies/:title", (req, res) => {
+  res.json(
+    movies.find((movie) => {
+      return movie.title === req.params.title;
+    })
+  );
 });
 
 // listen for requests
