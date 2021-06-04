@@ -52,6 +52,8 @@ let movies = [
 // middleware
 app.use(morgan("common"));
 app.use(express.static("public")); // this allows files to fetch statically, within the public folder
+app.use(bodyParser.json()); // will parse JSON
+
 // deal with error:
 app.use((err, req, res, next) => {
   console.error(err.stack);
