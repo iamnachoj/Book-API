@@ -54,11 +54,11 @@ let users = [
     password: "lol1234",
   },
 ];
+
 // middleware
 app.use(morgan("common"));
 app.use(express.static("public")); // this allows files to fetch statically, within the public folder
 app.use(bodyParser.json()); // will parse JSON
-
 // deal with error:
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -86,8 +86,12 @@ app.get("/API/movies/:title", (req, res) => {
   );
 });
 
-//POST requests
-app.post("/sign-up", (req, res) => {
+app.get("/users", (req, res) => {
+  res.json(users);
+});
+
+//POST request to register
+app.post("/register", (req, res) => {
   let user = req.body;
 
   if (!user.name) {
@@ -96,6 +100,22 @@ app.post("/sign-up", (req, res) => {
     user.id = uuid.v4();
     users.push(user);
     res.json(user);
+  }
+});
+
+//PUT request to change name
+app.put("/users/:name/:newName", (req, res) => {
+  let user = users.find((user) => {
+    return user.name === req.params.name;
+  });
+
+  if (user) {
+    user.name = req.params.newName;
+    res.status(201).send("User name changed to " + req.params.newName);
+  } else {
+    res
+      .status(404)
+      .send("User with the name " + req.params.name + " was not found.");
   }
 });
 
