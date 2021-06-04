@@ -1,6 +1,7 @@
-const morgan = require("morgan"); // Require Morgan
+const morgan = require("morgan"); // require Morgan
 const bodyParser = require("body-parser"); // require body-parser
-const express = require("express"); // Require Express
+const express = require("express"); // require Express
+const uuid = require("uuid"); // require uuid
 const app = express();
 
 let movies = [
