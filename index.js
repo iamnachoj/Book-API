@@ -54,11 +54,11 @@ app.get("/documentation", (req, res) => {
   res.sendFile(__dirname + "/public/documentation.html");
 });
 
-app.get("/movies", (req, res) => {
+app.get("/API/movies", (req, res) => {
   res.json(movies);
 });
 
-app.get("/movies/:title", (req, res) => {
+app.get("/API/movies/:title", (req, res) => {
   res.json(
     movies.find((movie) => {
       return movie.title === req.params.title;
