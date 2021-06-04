@@ -86,9 +86,16 @@ app.get("/API/movies/:title", (req, res) => {
   );
 });
 
-app.get("/users", (req, res) => {
-  res.json(users);
-});
+app.get("/users/:name/:password", (req, res) => {
+  let user = users.find((user) => {
+    return user.name === req.params.name;
+  });
+  if (user.password === req.params.password) {
+    res.json(user);
+  } else {
+    res.status(401).send("user or password incorrect");
+  }
+}); // by adding your name and password, you can access to your user
 
 //POST request to register
 app.post("/register", (req, res) => {
@@ -104,20 +111,23 @@ app.post("/register", (req, res) => {
 });
 
 //PUT request to change name
-app.put("/users/:name/:newName", (req, res) => {
+app.put("/users/:name/:password/:newName", (req, res) => {
   let user = users.find((user) => {
     return user.name === req.params.name;
   });
 
-  if (user) {
+  if (user.password === req.params.password) {
     user.name = req.params.newName;
-    res.status(201).send("User name changed to " + req.params.newName);
+    res.status(201).json(user);
   } else {
     res
       .status(404)
       .send("User with the name " + req.params.name + " was not found.");
   }
 });
+
+//PUT request to change password
+app.put("/users/:name/:password");
 
 // listen for requests
 app.listen(8080, () => {
