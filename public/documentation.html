@@ -25,23 +25,24 @@
     <h3>URL Endpoints</h3>
     <ul>
       <li>
-        <em>GET "/API/movies":</em> Deploys a list of all the movies in our
-        Database
+        <em>GET "/API/movies":</em> Deploys as a response a list of all the
+        movies in our Database
       </li>
       <li>
-        <em>GET "/API/movies/:title" :</em> Deploys the selected movie by title
+        <em>GET "/API/movies/:title" :</em> Deploys as a response the selected
+        movie by title
       </li>
       <li>
-        <em>GET "/users/:name/:password" :</em> Gives access to your user
-        profile
+        <em>GET "/users/:name/:password" :</em> responses access to your user
+        profile in JSON.
       </li>
       <li>
         <em>POST "/register" :</em> allows to sign up. Requires a name and a
-        password.
+        password. Responses with the brand-new created user in JSON
       </li>
       <li>
         <em>PUT "/users/:name/:password/:newName" :</em> allows to change the
-        name
+        name. Responses with the user in JSON, with the new name
       </li>
     </ul>
     <hr />
