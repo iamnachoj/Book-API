@@ -3,18 +3,36 @@ const bodyParser = require("body-parser"); // require body-parser
 const express = require("express"); // Require Express
 const app = express();
 
-let topBooks = [
+let movies = [
   {
     title: "Harry Potter and the Sorcerer's Stone",
-    author: "J.K. Rowling",
+    author: "Chris Colimbus",
+    year: 2001,
   },
   {
-    title: "Lord of the Rings",
-    author: "J.R.R. Tolkien",
+    title: "The Lord of the Rings: The Fellowship of the Ring",
+    author: "Peter Jackson",
+    year: 2001,
   },
   {
-    title: "Twilight",
-    author: "Stephanie Meyer",
+    title: "Pirates of Caribbean: The course of the Black Pearl",
+    author: "Gore Verbinski",
+    year: 2003,
+  },
+  {
+    title: "Star Wars: A New Hope",
+    author: "George Lucas",
+    year: 1977,
+  },
+  {
+    title: "Star Wars: The Empire Strikes Back",
+    author: "Irvin Kershner",
+    year: 1980,
+  },
+  {
+    title: "Star Wars: Return of the Jedi",
+    author: "Richard Marquand",
+    year: 1983,
   },
 ];
 
@@ -35,8 +53,8 @@ app.get("/documentation", (req, res) => {
   res.sendFile(__dirname + "/public/documentation.html");
 });
 
-app.get("/books", (req, res) => {
-  res.json(topBooks);
+app.get("/movies", (req, res) => {
+  res.json(movies);
 });
 
 // listen for requests
