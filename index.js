@@ -82,6 +82,7 @@ app.get("/API/movies/:title", (req, res) => {
   res.json(
     movies.find((movie) => {
       return movie.title === req.params.title;
+      //will return more info about movie (like IMG, genre...etc)
     })
   );
 });
