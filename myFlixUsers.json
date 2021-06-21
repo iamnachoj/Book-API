@@ -1,0 +1,5 @@
+{"_id":{"$oid":"60c7644932f5b3f308141bd4"},"Name":"Ignacio Jimenez","Email":"nachojimenez.94@gmail.com","FavouriteMovies":[{"$oid":"60c75dc7edbdf5f59d282249"}],"Birthday":[{"$date":"1994-08-18T00:00:00Z"}]}
+{"_id":{"$oid":"60c765c232f5b3f308141bd5"},"Name":"Manoel Sakaniwa","Email":"manoel.sakaniwa@gmail.com","FavouriteMovies":[{"$oid":"60c758fcedbdf5f59d282247"}],"Birthday":[{"$date":"1991-02-15T00:00:00Z"}]}
+{"_id":{"$oid":"60c766a432f5b3f308141bd6"},"Name":"Marine Viallaneix","Email":"marineviall.96@gmail.com","FavouriteMovies":[{"$oid":"60c75e7dedbdf5f59d28224a"}],"Birthday":[{"$date":"1996-04-22T00:00:00Z"}]}
+{"_id":{"$oid":"60c7675032f5b3f308141bd7"},"Name":"Salvatore Emma","Email":"salvemma@gmail.com","FavouriteMovies":[{"$oid":"60c7610032f5b3f308141bd2"},{"$oid":"60c75a35edbdf5f59d282248"}],"Birthday":[{"$date":"1992-06-15T00:00:00Z"}]}
+{"_id":{"$oid":"60c767ca32f5b3f308141bd8"},"Name":"Virginia García","Email":"virgarjim@gmail.com","FavouriteMovies":[{"$oid":"60c3712c60ac2e948ae33c3d"}],"Birthday":[{"$date":"1994-12-06T00:00:00Z"}]}
