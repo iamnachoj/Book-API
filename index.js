@@ -2,6 +2,7 @@ const morgan = require("morgan"); // require Morgan
 const bodyParser = require("body-parser"); // require body-parser
 const express = require("express"); // require Express
 const uuid = require("uuid"); // require uuid
+const mongoose = require("mongoose"); // require mongoose
 const app = express();
 
 let movies = [
