@@ -51,16 +51,49 @@ app.get("/users/:name/:id", (req, res) => {
 });
 
 //POST request to register
-app.post("/register", (req, res) => {
-  let user = req.body;
-
-  if (!user.name) {
-    res.status(400).send("Missing name!");
-  } else {
-    user.id = uuid.v4();
-    users.push(user);
-    res.json(user);
-  }
+// app.post("/register", (req, res) => {
+//   let user = req.body;
+//
+//   if (!user.name) {
+//     res.status(400).send("Missing name!");
+//   } else {
+//     user.id = uuid.v4();
+//     users.push(user);
+//     res.json(user);
+//   }
+// });
+app.post("/users", (req, res) => {
+  Users.findOne({ $or: [{ Name: req.body.Name }, { Email: req.body.Email }] })
+    .then((user) => {
+      if (user) {
+        return res
+          .status(400)
+          .send(
+            "'" +
+              req.body.Name +
+              "'" +
+              " username already exists, or the introduced email is already been used. Please try again."
+          );
+      } else {
+        Users.create({
+          Name: req.body.Name,
+          Password: req.body.Password,
+          Email: req.body.Email,
+          Birthday: req.body.Birthday,
+        })
+          .then((user) => {
+            res.status(201).json(user);
+          })
+          .catch((error) => {
+            console.error(error);
+            res.status(500).send("Error: " + error);
+          });
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("Error: " + error);
+    });
 });
 
 //PUT request to change name
