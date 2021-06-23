@@ -50,19 +50,8 @@ app.get("/users/:name/:id", (req, res) => {
   }
 });
 
-//POST request to register
-// app.post("/register", (req, res) => {
-//   let user = req.body;
-//
-//   if (!user.name) {
-//     res.status(400).send("Missing name!");
-//   } else {
-//     user.id = uuid.v4();
-//     users.push(user);
-//     res.json(user);
-//   }
-// });
-app.post("/users", (req, res) => {
+// Post requests
+app.post("/register", (req, res) => {
   Users.findOne({ $or: [{ Name: req.body.Name }, { Email: req.body.Email }] })
     .then((user) => {
       if (user) {
