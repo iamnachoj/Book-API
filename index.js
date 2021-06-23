@@ -50,7 +50,7 @@ app.get("/users/:name/:id", (req, res) => {
   }
 });
 
-// Post requests
+// POST requests
 app.post("/register", (req, res) => {
   Users.findOne({ $or: [{ Name: req.body.Name }, { Email: req.body.Email }] })
     .then((user) => {
