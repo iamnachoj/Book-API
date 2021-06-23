@@ -131,16 +131,15 @@ app.put("/users/:Name", (req, res) => {
         Birthday: req.body.Birthday,
       },
     },
-    { new: true }, // This line makes sure that the updated document is returned
-    (err, updatedUser) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send("Error: " + err);
-      } else {
-        res.json(updatedUser);
-      }
-    }
-  );
+    { new: true } // This line makes sure that the updated document is returned
+  )
+    .then((updatedUser) => {
+      res.status(201).json(updatedUser);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("Error: " + error);
+    });
 });
 
 // listen for requests
