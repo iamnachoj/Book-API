@@ -22,32 +22,36 @@ app.use((err, req, res, next) => {
   res.status(500).send("Something broke!");
 }); // deal with error
 
-// GET requests
+// GET homepage
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html"); // dirname allows node to start by the current directory
-}); //home page, static file
+});
 
+// GET documentation
 app.get("/documentation", (req, res) => {
   res.sendFile(__dirname + "/public/documentation.html");
-}); // documentation. static file
+});
 
+// GET all movies
 app.get("/API/movies", (req, res) => {
   Movies.find().then((movies) => res.json(movies));
-}); // with the help of mongoose, requests all the movies from our myFlixDB
+});
 
+// GET movies by title
 app.get("/API/movies/:title", (req, res) => {
   Movies.find({ Title: req.params.title }).then((movie) => res.json(movie));
-}); // with the help of mongoose, requests the movies that have same title as written in the endpoint, from our myFlixDB
+});
 
-app.get("/users/:name/:id", (req, res) => {
-  let user = users.find((user) => {
-    return user.name === req.params.name;
-  });
-  if (user.id === req.params.id) {
-    res.json(user);
-  } else {
-    res.status(401).send("user incorrect");
-  }
+// Get all users
+app.get("/users", (req, res) => {
+  Users.find()
+    .then((users) => {
+      res.status(201).json(users);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
 // POST requests
