@@ -109,7 +109,7 @@ app.post("/register", (req, res) => {
     });
 });
 
-// POST to push a movie to a user's list of favorites
+// POST a movie to a user's list of favorites
 app.post("/users/:Username/Movies/:MovieID", (req, res) => {
   Users.findOneAndUpdate(
     { Name: req.params.Username },
@@ -126,8 +126,8 @@ app.post("/users/:Username/Movies/:MovieID", (req, res) => {
       res.status(500).send("Error: " + error);
     });
 });
-// POST to pull a movie to a user's list of favorites
-app.post("/users/:Username/Movies/:MovieID/remove", (req, res) => {
+// DELETE a movie to a user's list of favorites
+app.delete("/users/:Username/Movies/:MovieID", (req, res) => {
   Users.findOneAndUpdate(
     { Name: req.params.Username },
     {
@@ -174,6 +174,22 @@ app.put("/users/:Name", (req, res) => {
     .catch((error) => {
       console.error(error);
       res.status(500).send("Error: " + error);
+    });
+});
+
+// DELETE a user by username
+app.delete("/users/:Username", (req, res) => {
+  Users.findOneAndRemove({ Name: req.params.Username })
+    .then((user) => {
+      if (!user) {
+        res.status(400).send(req.params.Username + " was not found");
+      } else {
+        res.status(200).send(req.params.Username + " was deleted.");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
     });
 });
 
