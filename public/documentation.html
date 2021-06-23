@@ -33,7 +33,7 @@
         movie by title
       </li>
       <li>
-        <em>GET "/users/:name/:id" :</em> responses access to your user profile
+        <em>GET "/users/:username" :</em> responses access to your user profile
         in JSON.
       </li>
       <li>
@@ -42,8 +42,20 @@
         the brand-new created user in JSON.
       </li>
       <li>
-        <em>PUT "/users/:name/:id/:newName" :</em> allows to change the name.
-        Responses with the user in JSON, with the new name
+        <em>POST "/users/:Username/Movies/:MovieID" :</em> allows you to add a
+        movie to your favourite movies list
+      </li>
+      <li>
+        <em>DELETE "/users/:Username/Movies/:MovieID" :</em> allows you to
+        remove a movie to your favourite movies list
+      </li>
+      <li>
+        <em>PUT "/users/:Name" : </em> updates user's info. Expects JSON in this
+        format: { Name: String, (required) Password: String, (required) Email:
+        String, (required) Birthday: Date }
+      </li>
+      <li>
+        <em>DELETE "/users/:Username" :</em> allows you to remove your user.
       </li>
       <!-- I don´t know which endpoint should I use for push or pull favourite movies from user profile -->
     </ul>
