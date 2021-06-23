@@ -68,6 +68,14 @@ app.get("/users/:Username", (req, res) => {
 
 // POST requests
 app.post("/register", (req, res) => {
+  /* We’ll expect JSON in this format
+{
+  ID: Integer,
+  Username: String,
+  Password: String,
+  Email: String,
+  Birthday: Date
+}*/
   Users.findOne({ $or: [{ Name: req.body.Name }, { Email: req.body.Email }] })
     .then((user) => {
       if (user) {
@@ -101,20 +109,38 @@ app.post("/register", (req, res) => {
     });
 });
 
-//PUT request to change name
-app.put("/users/:name/:id/:newName", (req, res) => {
-  let user = users.find((user) => {
-    return user.name === req.params.name;
-  });
-
-  if (user.id === req.params.id) {
-    user.name = req.params.newName;
-    res.status(201).json(user);
-  } else {
-    res
-      .status(404)
-      .send("User with the name " + req.params.name + " was not found.");
-  }
+// PUT to update a user's info, by username
+app.put("/users/:Name", (req, res) => {
+  /* We’ll expect JSON in this format
+  {
+    Username: String,
+    (required)
+    Password: String,
+    (required)
+    Email: String,
+    (required)
+    Birthday: Date
+  }*/
+  Users.findOneAndUpdate(
+    { Name: req.params.Name },
+    {
+      $set: {
+        Name: req.body.Name,
+        Password: req.body.Password,
+        Email: req.body.Email,
+        Birthday: req.body.Birthday,
+      },
+    },
+    { new: true }, // This line makes sure that the updated document is returned
+    (err, updatedUser) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send("Error: " + err);
+      } else {
+        res.json(updatedUser);
+      }
+    }
+  );
 });
 
 // listen for requests
