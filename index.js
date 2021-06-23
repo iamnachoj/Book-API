@@ -66,7 +66,7 @@ app.get("/users/:Username", (req, res) => {
     });
 });
 
-// POST requests
+// POST register
 app.post("/register", (req, res) => {
   /* We’ll expect JSON in this format
 {
@@ -102,6 +102,24 @@ app.post("/register", (req, res) => {
             res.status(500).send("Error: " + error);
           });
       }
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("Error: " + error);
+    });
+});
+
+// POST a movie to a user's list of favorites
+app.post("/users/:Username/Movies/:MovieID", (req, res) => {
+  Users.findOneAndUpdate(
+    { Name: req.params.Username },
+    {
+      $push: { FavouriteMovies: req.params.MovieID },
+    },
+    { new: true } // This line makes sure that the updated document is returned
+  )
+    .then((updatedUser) => {
+      res.json(updatedUser);
     })
     .catch((error) => {
       console.error(error);
