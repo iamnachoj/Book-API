@@ -4,6 +4,9 @@ const express = require("express"); // require Express
 const uuid = require("uuid"); // require uuid
 const mongoose = require("mongoose"); // require mongoose
 const Models = require("./models.js"); // require defined file for models
+const passport = require("passport");
+
+require("./passport");
 
 const app = express();
 const Movies = Models.Movie; // here we create a variable that stores the models for both movies and users
@@ -21,6 +24,7 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
 }); // deal with error
+let auth = require("./auth")(app); // it is placed here because it needs to be AFTER body parser is called.
 
 // GET homepage
 app.get("/", (req, res) => {
