@@ -37,14 +37,32 @@ app.get("/documentation", (req, res) => {
 });
 
 // GET all movies
-app.get("/API/movies", (req, res) => {
-  Movies.find().then((movies) => res.json(movies));
-});
+app.get(
+  "/API/movies",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Movies.find()
+      .then((movies) => res.json(movies))
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
+      });
+  }
+);
 
 // GET movies by title
-app.get("/API/movies/:title", (req, res) => {
-  Movies.find({ Title: req.params.title }).then((movie) => res.json(movie));
-});
+app.get(
+  "/API/movies/:title",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Movies.find({ Title: req.params.title })
+      .then((movie) => res.json(movie))
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
+      });
+  }
+);
 
 // Get all users
 app.get("/users", (req, res) => {
