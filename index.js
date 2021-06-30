@@ -110,14 +110,7 @@ app.get("/users/:Username", (req, res) => {
 
 // POST register a new user
 app.post("/register", (req, res) => {
-  /* We’ll expect JSON in this format
-{
-  ID: Integer,
-  Username: String,
-  Password: String,
-  Email: String,
-  Birthday: Date
-}*/
+  let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOne({ $or: [{ Name: req.body.Name }, { Email: req.body.Email }] })
     .then((user) => {
       if (user) {
@@ -132,7 +125,7 @@ app.post("/register", (req, res) => {
       } else {
         Users.create({
           Name: req.body.Name,
-          Password: req.body.Password,
+          Password: hashedPassword,
           Email: req.body.Email,
           Birthday: req.body.Birthday,
         })
