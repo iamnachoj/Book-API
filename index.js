@@ -208,27 +208,48 @@ app.delete("/users/:Username/Movies/:MovieID", (req, res) => {
 });
 
 // PUT to update a user's info, by username
-app.put("/users/:Name", (req, res) => {
-  Users.findOneAndUpdate(
-    { Name: req.params.Name },
-    {
-      $set: {
-        Name: req.body.Name,
-        Password: req.body.Password,
-        Email: req.body.Email,
-        Birthday: req.body.Birthday,
+app.put(
+  "/users/:Name",
+  [
+    check("Name", "Username longer than 5 characters is required").isLength({
+      min: 5,
+    }),
+    check(
+      "Name",
+      "Username contains non alphanumeric characters - not allowed."
+    ).isAlphanumeric("en-US", { ignore: " " }),
+    check("Password", "Password is required").not().isEmpty(),
+    check("Email", "Email does not appear to be valid").isEmail(),
+  ],
+  (req, res) => {
+    // check the validation object for errors
+    let errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+    let hashedPassword = Users.hashPassword(req.body.Password);
+    Users.findOneAndUpdate(
+      { Name: req.params.Name },
+      {
+        $set: {
+          Name: req.body.Name,
+          Password: hashedPassword,
+          Email: req.body.Email,
+          Birthday: req.body.Birthday,
+        },
       },
-    },
-    { new: true } // This line makes sure that the updated document is returned
-  )
-    .then((updatedUser) => {
-      res.status(201).json(updatedUser);
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).send("Error: " + error);
-    });
-});
+      { new: true } // This line makes sure that the updated document is returned
+    )
+      .then((updatedUser) => {
+        res.status(201).json(updatedUser);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
+      });
+  }
+);
 
 // DELETE a user by username
 app.delete("/users/:Username", (req, res) => {
