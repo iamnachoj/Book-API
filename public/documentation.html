@@ -33,10 +33,6 @@
         movie by title
       </li>
       <li>
-        <em>GET "/users/:username" :</em> responses access to your user profile
-        in JSON.
-      </li>
-      <li>
         <em>POST "/register" :</em> allows to sign up. Requires a name,
         password, email, and a birth date (format yyyy/mm/dd). Responses with
         the brand-new created user in JSON.
@@ -44,6 +40,10 @@
       <li>
         <em>POST "/users/:Username/Movies/:MovieID" :</em> allows you to add a
         movie to your favourite movies list
+      </li>
+      <li>
+        <em>POST "/login" :</em> allows you to access to your account by
+        inserting user name and password.
       </li>
       <li>
         <em>PUT "/users/:Name" : </em> updates user's info. Expects JSON in this
