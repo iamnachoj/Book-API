@@ -109,40 +109,60 @@ app.get("/users/:Username", (req, res) => {
 });
 
 // POST register a new user
-app.post("/register", (req, res) => {
-  let hashedPassword = Users.hashPassword(req.body.Password);
-  Users.findOne({ $or: [{ Name: req.body.Name }, { Email: req.body.Email }] })
-    .then((user) => {
-      if (user) {
-        return res
-          .status(400)
-          .send(
-            "'" +
-              req.body.Name +
+app.post(
+  "/register",
+  [
+    check("Name", "Username longer than 5 characters is required").isLength({
+      min: 5,
+    }),
+    check(
+      "Name",
+      "Username contains non alphanumeric characters - not allowed."
+    ).isAlphanumeric("en-US", { ignore: " " }),
+    check("Password", "Password is required").not().isEmpty(),
+    check("Email", "Email does not appear to be valid").isEmail(),
+  ],
+  (req, res) => {
+    // check the validation object for errors
+    let errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+    let hashedPassword = Users.hashPassword(req.body.Password);
+    Users.findOne({ $or: [{ Name: req.body.Name }, { Email: req.body.Email }] })
+      .then((user) => {
+        if (user) {
+          return res
+            .status(400)
+            .send(
               "'" +
-              " username already exists, or the introduced email is already been used. Please try again."
-          );
-      } else {
-        Users.create({
-          Name: req.body.Name,
-          Password: hashedPassword,
-          Email: req.body.Email,
-          Birthday: req.body.Birthday,
-        })
-          .then((user) => {
-            res.status(201).json(user);
+                req.body.Name +
+                "'" +
+                " username already exists, or the introduced email is already been used. Please try again."
+            );
+        } else {
+          Users.create({
+            Name: req.body.Name,
+            Password: hashedPassword,
+            Email: req.body.Email,
+            Birthday: req.body.Birthday,
           })
-          .catch((error) => {
-            console.error(error);
-            res.status(500).send("Error: " + error);
-          });
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).send("Error: " + error);
-    });
-});
+            .then((user) => {
+              res.status(201).json(user);
+            })
+            .catch((error) => {
+              console.error(error);
+              res.status(500).send("Error: " + error);
+            });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
+      });
+  }
+);
 
 // POST a movie to a user's list of favorites
 app.post("/users/:Username/Movies/:MovieID", (req, res) => {
