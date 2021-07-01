@@ -246,6 +246,11 @@ app.delete("/users/:Username", (req, res) => {
     });
 });
 
+//redirects wrong urlendpoints to homepage
+app.all("*", function (req, res) {
+  res.redirect("/");
+});
+
 // listen for requests
 app.listen(8080, () => {
   console.log("App is listening on port 8080.");
