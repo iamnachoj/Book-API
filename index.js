@@ -5,7 +5,7 @@ const uuid = require("uuid"); // require uuid
 const mongoose = require("mongoose"); // require mongoose
 const Models = require("./models.js"); // require defined file for models
 const passport = require("passport");
-
+const { check, validationResult } = require("express-validator");
 require("./passport");
 
 const app = express();
