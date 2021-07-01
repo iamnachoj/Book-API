@@ -17,13 +17,13 @@ app.use(bodyParser.json()); // will parse JSON
 mongoose.connect("mongodb://localhost:27017/myFlixDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-}); // this makes mongoose function
+}); // this makes mongoose connect with database
 app.use(morgan("common")); // just to log info on console about http requests
 app.use(express.static("public")); // this allows files to fetch statically, within the public folder
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
-}); // deal with error
+}); // deals with error
 
 //Cross-origin resource sharing
 const cors = require("cors");
