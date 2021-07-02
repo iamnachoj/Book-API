@@ -1,10 +1,12 @@
-# movie API 
+# movie API
 
 ## Project Goals
+
 To build the server-side component of a “movies” web application. The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their
 personal information, and create a list of their favorite movies.
 
 ## Key Features
+
 - Return a list of ALL movies to the user
 - Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user
 - Return data about a genre (description) by name/title (e.g., “Thriller”)
@@ -16,15 +18,21 @@ personal information, and create a list of their favorite movies.
 - Allow existing users to deregister
 
 ## Tech stack:
-### MERN Stack: 
+
+### MERN Stack:
+
 - Node.js
-- Express
+- Express (check out package.json to see all dependencies)
 - React
-- MongoDB
+- MongoDB (Atlas. DB remote online)
 
 ## Setup guide:
+
 clone the repository: git clone xxxx
 Change directory: cd xxx
+
 ## Deployment
+
 ### Deployment to Heroku
-Not ready yet
+
+link <a href="https://myflix-lounge.herokuapp.com/">here! </a>
