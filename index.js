@@ -14,10 +14,19 @@ const Users = Models.User;
 
 // middleware
 app.use(bodyParser.json()); // will parse JSON
-mongoose.connect("mongodb://localhost:27017/myFlixDB", {
+
+// //Local DB
+// mongoose.connect("mongodb://localhost:27017/myFlixDB", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+
+// Atlas DB
+mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-}); // this makes mongoose connect with database
+});
+
 app.use(morgan("common")); // just to log info on console about http requests
 app.use(express.static("public")); // this allows files to fetch statically, within the public folder
 app.use((err, req, res, next) => {
