@@ -112,7 +112,7 @@ app.get(
 
 // POST register a new user
 app.post(
-  "/register",
+  "/users",
   [
     check("Name", "Username longer than 5 characters is required").isLength({
       min: 5,
