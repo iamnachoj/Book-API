@@ -36,7 +36,6 @@ app.use((err, req, res, next) => {
 
 //Cross-origin resource sharing
 const cors = require("cors");
-let allowedOrigins = ["http://localhost:8080"];
 app.use(cors()); //end of CORS
 
 let auth = require("./auth")(app); // it is placed here because it needs to be AFTER body parser is called.
