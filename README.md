@@ -4,7 +4,7 @@ The Movie API is a server-side component of a “movies” web app, that include
 
 The application provides authenticated users with access to movies information. They can add movies to their favourite list, as well as common abilities as to change or delete their profile. The REST API will be accessed by CRUD operations.
 
-# Deployment to Heroku
+### Deployment to Heroku
 
 link <a href="https://myflix-lounge.herokuapp.com/">here! </a>
 
