@@ -40,7 +40,7 @@ Lastly, do git push heroku master.
 
 Please note that you may also use the Heroku Dashboard to set or modify the configurations for your application.
 
-## view live demo: link <a href="https://myflix-lounge.herokuapp.com/">here! </a>
+## view live demo: link <a target="_blank" href="https://myflix-lounge.herokuapp.com/">here! </a>
 I used postman to test the api. To use postman, go to the project doc folder and import the docs file into your postman client to ease the testing
 
 Don´t forget to check out the documentation endpoint (/Documentation) in order to know how to send every HTTP request.
