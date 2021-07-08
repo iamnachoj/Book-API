@@ -13,12 +13,12 @@ The application provides authenticated users with access to movies information. 
 ## Getting Started
 The easiest way to get started is to clone the repository:
 
-1 . clone the repository
-2 . git clone https://github.com/iamnachoj/Movie-API/
-3 . Change directory
-4 . cd Movie API
-5 . Install NPM dependencies
-6 . start the server
+1. Clone the repository
+2. Git clone https://github.com/iamnachoj/Movie-API/
+3. Change directory
+4. cd Movie API
+5. Install NPM dependencies
+6. Start the server
 Note: It is recommended to install nodemon for livereloading - It watches for any changes in your node.js app and automatically restarts the server
 
 ## Deployment
