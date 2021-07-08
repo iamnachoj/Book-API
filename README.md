@@ -19,7 +19,7 @@ The easiest way to get started is to clone the repository:
 4. cd Movie API
 5. Install NPM dependencies
 6. Start the server
-Note: It is recommended to install nodemon for livereloading - It watches for any changes in your node.js app and automatically restarts the server
+Note: It is recommended to install nodemon for live reloading - It watches for any changes in your node.js app and automatically restarts the server
 
 ## Deployment
 ### Deployment to Heroku
