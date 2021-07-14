@@ -3,11 +3,14 @@ const bodyParser = require("body-parser"); // require body-parser
 const express = require("express"); // require Express
 const uuid = require("uuid"); // require uuid
 const mongoose = require("mongoose"); // require mongoose
+const Models = require("./models.js"); // require defined file for models
 const passport = require("passport");
 const { check, validationResult } = require("express-validator");
 require("./passport");
 
 const app = express();
+const Movies = Models.Movie; // here we create a variable that stores the models for both movies and users
+const Users = Models.User;
 
 // middleware
 app.use(bodyParser.json()); // will parse JSON
