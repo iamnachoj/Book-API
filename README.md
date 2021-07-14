@@ -1,38 +1,47 @@
-# movie API
 
-## Project Goals
+# MyFlix API
 
-To build the server-side component of a “movies” web application. The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their
-personal information, and create a list of their favorite movies.
+The Movie API is a server-side component of a “movies” web app, that includes a database created with MongoDB, the server, and the business logic layer. 
 
-## Key Features
+The application provides authenticated users with access to movies information. They can add movies to their favourite list, as well as common abilities as to change or delete their profile. The REST API will be accessed by CRUD operations.
 
-- Return a list of ALL movies to the user
-- Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user
-- Return data about a genre (description) by name/title (e.g., “Thriller”)
-- Return data about a director (bio, birth year, death year) by name
-- Allow new users to register
-- Allow users to update their user info (username, password, email, date of birth)
-- Allow users to add a movie to their list of favorites
-- Allow users to remove a movie from their list of favorites
-- Allow existing users to deregister
+## Tools
+ - NodeJS
+ - Express
+ - MongoDB
 
-## Tech stack:
+## Getting Started
+The easiest way to get started is to clone the repository:
 
-### MERN Stack:
-
-- Node.js
-- Express (check out package.json to see all dependencies)
-- React
-- MongoDB (Atlas. DB remote online)
-
-## Setup guide:
-
-clone the repository: git clone xxxx
-Change directory: cd xxx
+1. Clone the repository
+2. Git clone https://github.com/iamnachoj/Movie-API/
+3. Change directory
+4. cd Movie API
+5. Install NPM dependencies
+6. Start the server
+Note: It is recommended to install nodemon for live reloading - It watches for any changes in your node.js app and automatically restarts the server
 
 ## Deployment
-
 ### Deployment to Heroku
 
-link <a href="https://myflix-lounge.herokuapp.com/">here! </a>
+Download and install Heroku CLI
+
+In a terminal, run heroku login and enter your Heroku credentials
+
+From your app directory run heroku create
+
+Use the command heroku config:set KEY=val to set the different environment variables (KEY=val) for your application (i.e. heroku config:set BASE_URL=[heroku App Name].herokuapp.com etc.)
+
+Do git add .
+
+Do git commit -m" reason for commit"
+
+Lastly, do git push heroku master.
+
+Please note that you may also use the Heroku Dashboard to set or modify the configurations for your application.
+
+## view live demo: link <a href="https://myflix-lounge.herokuapp.com/" target="_blank">here! </a>
+I used postman to test the api. To use postman, go to the project doc folder and import the docs file into your postman client to ease the testing
+
+Don´t forget to check out the documentation endpoint (/Documentation) in order to know how to send every HTTP request.
+
