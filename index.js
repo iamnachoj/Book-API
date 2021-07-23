@@ -53,7 +53,7 @@ app.get("/documentation", (req, res) => {
 // GET all movies
 app.get(
   "/API/movies",
-  // passport.authenticate("jwt", { session: false }), [DISABLED FOR NOW]
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Movies.find()
       .then((movies) => res.json(movies))
