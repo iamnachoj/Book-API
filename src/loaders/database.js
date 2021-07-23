@@ -17,18 +17,14 @@ exports.connectMongoWithRetry = async () => {
   const connectionOptions = config.mongo.options
   try {
     await mongoose.connect(connectionString, connectionOptions)
-    logger.info(' 💻 Mongoose successfully connected to Connetmi database: ')
+    console.log(' 💻 Mongoose successfully connected to Movie database: ')
     return mongoose.connection
   } catch (error) {
     if (error.message.code === 'ETIMEDOUT') {
-      logger.info('Attempting to re-establish database connection.')
+      console.log('Attempting to re-establish database connection.')
       mongoose.connect(connectionString, connectionOptions)
     } else {
-      logger.error(
-        chalk.bgRed.bold('Error while attempting to connect to database:', {
-          error,
-        }),
-      )
+      console.error('Error while attempting to connect to database', error);
     }
   }
 }

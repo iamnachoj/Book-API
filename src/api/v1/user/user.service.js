@@ -50,7 +50,7 @@ const user  = await Users.create(payload)
       return user
 }
 
-const updateUserByUsername = async(inputData, username)=>{
+const updateUserByUsername = async(inputData)=>{
     const {username, password, email,birthday } = inputData
    let hashedPassword = Users.hashPassword(password);
    const updatedUser = await Users.findOneAndUpdate(

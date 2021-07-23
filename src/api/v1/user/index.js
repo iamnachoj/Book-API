@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { validate } = require('../../../helpers/validation');
+const { validate } = require('../../../helpers/validate');
 const { authenticate } = require('../../../helpers/authenticate');
 
 const UserController = require('./user.controller');
@@ -7,7 +7,7 @@ const { createUserValidation, updateUserValidation } =  require('./user.validati
 
 const userRouter = Router();
 
-userRouter.route('/register').post(userController.registerUser);
+userRouter.route('/register').post(UserController.registerUser);
 userRouter.route('/').post(validate(createUserValidation), UserController.createUser);
 userRouter.route('/:username').post(validate(updateUserValidation), authenticate(), UserController.updateUserByUsername);
 

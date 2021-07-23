@@ -8,7 +8,22 @@ apiRouter.get('/', (req, res) => {
   res.status(200).json({ success: true, message: 'Movie api is live!' });
 });
 
+// GET homepage
+apiRouter.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html"); // dirname allows node to start by the current directory
+});
+
+// GET documentation
+apiRouter.get("/documentation", (req, res) => {
+  res.sendFile(__dirname + "/public/documentation.html");
+});
+
 apiRouter.use('/user', userRoutes);
 
-export default apiRouter;
+//redirects wrong urlendpoints to homepage
+apiRouter.all("*", function (req, res) {
+  res.redirect("/");
+});
+
+module.exports = apiRouter;
 
