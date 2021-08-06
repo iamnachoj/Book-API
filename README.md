@@ -1,8 +1,10 @@
 # MyFlix API
 
-The Movie API is a server-side component of a “movies” web app, that includes a database created with MongoDB, the server, and the business logic layer.
+The Movie API is a server-side component of a “movies” RESTful API, that includes a database created with MongoDB, the server, and the business logic layer.
 
 The application provides authenticated users with access to movies information. They can add movies to their favourite list, as well as common abilities as to change or delete their profile. The REST API will be accessed by CRUD operations.
+
+It's User Interface (client-side) is built externally with React. See link to the app here <a href="https://github.com/iamnachoj/myFlix-client">here</a>)
 
 ## Tools
 
