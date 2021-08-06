@@ -9,12 +9,12 @@ const passport = require("passport"),
 passport.use(
   new LocalStrategy(
     {
-      usernameField: "username",
-      passwordField: "password"
+      usernameField: "Name",
+      passwordField: "Password",
     },
-    (username, password, callback) => {
-      console.log(username + " " + password);
-      UserModel.findOne({ username: username }, (error, user) => {
+    (name, password, callback) => {
+      console.log(name + "  " + password);
+      UserModel.findOne({ Name: name }, (error, user) => {
         if (error) {
           console.log(error);
           return callback(error);
@@ -23,15 +23,13 @@ passport.use(
         if (!user) {
           console.log("incorrect username");
           return callback(null, false, {
-            message: "Incorrect username."
+            message: "Incorrect username",
           });
         }
-
         if (!user.validatePassword(password)) {
           console.log("incorrect password");
           return callback(null, false, { message: "Incorrect password." });
         }
-
         console.log("finished");
         return callback(null, user);
       });
@@ -43,14 +41,14 @@ passport.use(
   new JWTStrategy(
     {
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-      secretOrKey: "your_jwt_secret"
+      secretOrKey: "your_jwt_secret",
     },
     (jwtPayload, callback) => {
       return UserModel.findById(jwtPayload._id)
-        .then(user => {
+        .then((user) => {
           return callback(null, user);
         })
-        .catch(error => {
+        .catch((error) => {
           return callback(error);
         });
     }

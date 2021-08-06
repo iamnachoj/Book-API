@@ -7,7 +7,7 @@ const expressLoader = (app) => {
   app.disable('x-powered-by');
   initVendorMiddlewares(app);
 
-  app.use('/v1/api', installApiEndpoints);
+  app.use('/api/v1', installApiEndpoints);
 
   return app;
 };

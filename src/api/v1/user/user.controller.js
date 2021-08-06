@@ -33,6 +33,26 @@ const createUser = async (req,res) =>{
 }
 
 
+const getAllUsers = async (req,res) =>{
+  try {
+    const foundUsers = await UserService.getAllUsers()
+    res.status(200).json(foundUsers)
+  } catch (error) {
+    res.status(500).send("Error: " + error);
+  }
+}
+
+const getUserByUsername = async (req,res) =>{
+  const {username} = req.params
+  try {
+    const foundUsers = await UserService.getUserByUsername(username)
+    res.status(200).json(foundUsers)
+  } catch (error) {
+    res.status(500).send("Error: " + error);
+  }
+}
+
+
 const updateUserByUsername = async (req,res) =>{
   const inputData = req.body
   const username = req.params.username
@@ -44,9 +64,35 @@ const updateUserByUsername = async (req,res) =>{
   }
 }
 
+const addMovieToUserFavorite = async (req,res) =>{
+  const username = req.params.username
+  const movieId = req.params.movieId
+  try {
+    const movieAddedToUserFavorite = await UserService.addMovieToUserFavorite(username, movieId)
+    res.status(201).json(movieAddedToUserFavorite)
+  } catch (error) {
+    res.status(500).send("Error: " + error);
+  }
+}
+
+const removeUserFromFavoriteList = async (req,res) =>{
+  const username = req.params.username
+  const movieId = req.params.movieId
+  try {
+    const movieAddedToUserFavorite = await UserService.removeUserFromFavoriteList(username, movieId)
+    res.status(201).json(movieAddedToUserFavorite)
+  } catch (error) {
+    res.status(500).send("Error: " + error);
+  }
+}
+
 
 module.exports ={
   registerUser,
   createUser,
-  updateUserByUsername
+  updateUserByUsername,
+  addMovieToUserFavorite,
+  removeUserFromFavoriteList,
+  getAllUsers,
+  getUserByUsername
 }
