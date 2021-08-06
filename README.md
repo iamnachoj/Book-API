@@ -1,4 +1,4 @@
-# MyFlix API
+# Movie API
 
 The Movie API is a server-side component of a “movies” RESTful API, that includes a database created with MongoDB, the server, and the business logic layer.
 
